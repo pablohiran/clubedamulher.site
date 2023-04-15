@@ -33,19 +33,18 @@ fbq('track', 'ViewContent');
 src="https://www.facebook.com/tr?id=850828159537430&ev=PageView&noscript=1"
 /></noscript><!-- End Meta Pixel Code -->  
 
-<script type="text/javascript">
-    var back_redirect_back_link = '/redirect'+ location.search;
-    // Não altere daqui para baixo
+<script>
+    var urlBackRedirect = 'https://clubedamulher.site/redirect/';
+    urlBackRedirect = urlBackRedirect = urlBackRedirect.trim() +
+            (urlBackRedirect.indexOf("?") > 0 ? '&' : '?') +
+            document.location.search.replace('?', '').toString();
     history.pushState({}, "", location.href);
     history.pushState({}, "", location.href);
-
-    window.addEventListener('popstate', function (event) {
-        if (event.state) {
-            setTimeout(function () {
-                location.href = back_redirect_back_link;
-            }, 1);
-        }
-    }, false);
+    window.onpopstate = function () {
+        setTimeout(function () {
+            location.href = urlBackRedirect;
+        }, 1);
+    };
 </script>
 </head>
 
